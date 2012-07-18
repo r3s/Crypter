@@ -6,7 +6,7 @@ A small app written in Java for drag and drop file encryption.
 ChangeLog:
 ==========
 Added command line support. Files can be encrypted from the command line/terminal.
-
+Added execcutable jar. Check inside the jar folder
 
 Command line parameters:
 ========================
@@ -16,6 +16,8 @@ For decryption : -d or --decrypt
 Either -e or -d should be specified.
 
 To specify password : -p password (required)
+
+
 
 Examples:
 =========
