@@ -42,27 +42,75 @@ public class Crypter extends JFrame{
 	int op=1;
 	static int MAX_SIZE=20971520;
 	
-	/*Constructor*/
+	/*Basic Constructor*/
 	Crypter(){
-		initUI();
 	}
+	
+	/*Constructor when used using console(terminal) */
+	public void cmdlineProcess(String[] files,String pass,int action){
+		
+		/*Check if action is valid (1=enc, 2=dec)*/
+		if(action==1||action==2){
+			
+			/*Loop through filenames */
+			for(int i=0;i<files.length;i++){
+				
+				/*Try each filename and check if the file is valid*/
+				File f=new File(files[i]);
+				if(f!=null && f.exists()){
+					
+					/*Since it's valid, set operation as action and call encrptFileProcess*/
+					setop(action);
+					int res=encryptFileProcess(f, pass);
+					
+					/*Check if any error occured and print error message if required*/
+					if(res!=0)
+						errorMessageConsole("\nProcess failed for "+files[i]);
+					else
+						errorMessageConsole("\nFinished processing : "+files[i]+"\n");
+				}
+				else
+					errorMessageConsole("\nUnable to open "+files[i]+"\n");
+			}
+		}
+		else{
+			errorMessageConsole("\nWrong parameters.\n");
+			System.exit(2);
+		}
+		
+	}
+	
 
-
-	/*Function to show error dialogues */
-	void errorMessage(String msg){
+	/*Functions to show error dialogues */
+	public static void errorMessage(String msg){
 		JOptionPane.showMessageDialog(jp, "Error : "+msg);
 		
 	}
 	
-	/* Function used to display debug messages. Not used in release */
+	public static void errorMessageConsole(String msg){
+		System.out.println("Error: "+msg);
+	}
+	
+	/* Functions used to display debug messages. Not used in release */
 	public static void debugMsg(String msg){
 		JOptionPane.showMessageDialog(jp,msg );
 	}
-	
+	public static void debugMsgConsole(String msg){
+		System.out.println("Debug: "+msg);
+	}
 	
 	/*Function to mix strings together*/
 	public String mixStrings(String a, String b){
 		return (a+b);
+	}
+	
+	
+	/* 2 functions, to set the option and get it */
+	public void setop(int val){
+		op=val;
+	}
+	public int getop(){
+		return op;
 	}
 	
 	/*AES encryption of byte array */
@@ -100,13 +148,6 @@ public class Crypter extends JFrame{
 		return crypted;
 	}
 	
-	/* 2 functions, to set the option and get it */
-	public void setop(int val){
-		op=val;
-	}
-	public int getop(){
-		return op;
-	}
 	
 	/*Function to read file */
 	public byte[] getFile(String fname) throws Exception{
@@ -358,12 +399,22 @@ public class Crypter extends JFrame{
 	
 	/*MAIN*/
 	public static void main(String[] args){
+		
+		/*Check for commandline arguments*/
+		if(args.length>1){
+			
+			ArgumentParser parser=new ArgumentParser();
+			parser.parseArguments(args);
+		}
+		else{
 		/*Run the app*/
 		SwingUtilities.invokeLater(new Runnable() {
             public void run() {
             	Crypter cr=new Crypter();
+            	cr.initUI();
             	cr.setVisible(true);
             	}
 			});
+		}
 	}
 }

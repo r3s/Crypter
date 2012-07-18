@@ -46,6 +46,7 @@ public class PasswordDialog extends JDialog{
 		passwdOkButton.setBounds(240,10,80,30);
 		passwdCancelButton.setBounds(325,10,100,30);
 		
+		/*Action listeners for the buttons and also when pressing enter in the password field*/
 		passwdOkButton.addActionListener(new ActionListener() {
 			
 			@Override
@@ -68,6 +69,20 @@ public class PasswordDialog extends JDialog{
 				
 			}
 		});
+		
+		passwdField.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				/*If user pressed ok, then set ok=1, and password=text from textfield*/
+				ok=1;	
+				passwd= new String(passwdField.getPassword());
+				
+				dispose();
+				
+			}
+		});
+		
 		
 		/*Add all components to UI and pack the dialog*/
 		add(passwdText);
