@@ -83,7 +83,7 @@ public class Crypter extends JFrame{
 
 	/*Functions to show error dialogues */
 	public static void errorMessage(String msg){
-		JOptionPane.showMessageDialog(jp, "Error : "+msg);
+		JOptionPane.showMessageDialog(jp, "Message: "+msg);
 		
 	}
 	
