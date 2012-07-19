@@ -2,10 +2,14 @@ Crypter
 =======
 
 A small app written in Java for drag and drop file encryption.
+It uses 128bit AES encryption with passsword.
+Maximum file size supported is 20 MB.
+Command line support is achieved using jArgs (http://jargs.sourceforge.net/) command line option parsing suite for Java
 
 ChangeLog:
 ==========
 Added command line support. Files can be encrypted from the command line/terminal.
+
 Added execcutable jar. Check inside the jar folder
 
 Command line parameters:
