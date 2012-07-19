@@ -65,9 +65,9 @@ public class Crypter extends JFrame{
 					
 					/*Check if any error occured and print error message if required*/
 					if(res!=0)
-						errorMessageConsole("\nProcess failed for "+files[i]);
+						errorMessageConsole("Process failed for "+files[i]+"\n");
 					else
-						errorMessageConsole("\nFinished processing : "+files[i]+"\n");
+						errorMessageConsole("Finished processing : "+files[i]+"\n");
 				}
 				else
 					errorMessageConsole("\nUnable to open "+files[i]+"\n");
@@ -88,7 +88,7 @@ public class Crypter extends JFrame{
 	}
 	
 	public static void errorMessageConsole(String msg){
-		System.out.println("Error: "+msg);
+		System.out.println("Message: "+msg);
 	}
 	
 	/* Functions used to display debug messages. Not used in release */
