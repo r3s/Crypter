@@ -215,13 +215,17 @@ public class Crypter extends JFrame{
 			if(getop()==1){
 				encname=filename+".enc";
 			}
-			/*If option=2, do decryption*/
+			/*If option=2, do decryption after recreating the filename*/
 			else if(getop()==2){
 				int start = filename.indexOf(".");
 				int end = start+4;
 				String ext = filename.substring(start,end);
 				filename = filename.substring(0,start);
 				encname=filename+ext;
+				//If the recreated filename already exists, change the name
+				File f=new File(encname);
+				if(f.exists())
+					encname = filename+"_decrypted"+ext;
 			}
 			try{barray=doAES(barray,pass);}
 			catch(Exception e){e.printStackTrace();}
