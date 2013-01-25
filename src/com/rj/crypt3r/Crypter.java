@@ -415,14 +415,23 @@ public class Crypter extends JFrame{
 			parser.parseArguments(args);
 		}
 		else{
-		/*Run the app*/
-		SwingUtilities.invokeLater(new Runnable() {
-            public void run() {
-            	Crypter cr=new Crypter();
-            	cr.initUI();
-            	cr.setVisible(true);
-            	}
-			});
+
+			/*Set the UI to GTK if available */
+			try {
+		        UIManager.setLookAndFeel("com.sun.java.swing.plaf.gtk.GTKLookAndFeel");                
+		
+		        } catch (Exception e) {
+		        System.out.println("Error creating GTK UI");
+		        }
+		        
+			/*Run the app*/
+			SwingUtilities.invokeLater(new Runnable() {
+	            public void run() {
+	            	Crypter cr=new Crypter();
+	            	cr.initUI();
+	            	cr.setVisible(true);
+	            	}
+				});
 		}
 	}
 }
