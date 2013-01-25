@@ -217,7 +217,11 @@ public class Crypter extends JFrame{
 			}
 			/*If option=2, do decryption*/
 			else if(getop()==2){
-				encname=filename+".dec";
+				int start = filename.indexOf(".");
+				int end = start+4;
+				String ext = filename.substring(start,end);
+				filename = filename.substring(0,start);
+				encname=filename+ext;
 			}
 			try{barray=doAES(barray,pass);}
 			catch(Exception e){e.printStackTrace();}
