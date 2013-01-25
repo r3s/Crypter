@@ -37,8 +37,11 @@ public class Crypter extends JFrame{
 	/* Some variables, constants */
 	final static JPanel jp= new JPanel();
 	JLabel info=new JLabel();
-	String helpmsg="1.Choose an option , Encrypt or Decrypt.(default is encrypt)\n\r2.Drag and drop files\n\r3.Enter Password when Prompted\n\r4.Check the folder to see a new encrypted file.\n\r5.Choose File->Exit to exit the app";
-	String aboutmsg="Created by res";
+	final String helpmsg="1.Choose an option , Encrypt or Decrypt.(default is encrypt)\n\r" +
+						"2.Drag and drop files\n\r3.Enter Password when Prompted\n\r" +
+						"4.Check the folder to see a new encrypted file.\n\r" +
+						"5.Choose File->Exit to exit the app";
+	final String aboutmsg="Created by res";
 	int op=1;
 	static int MAX_SIZE=20971520;
 	
@@ -286,8 +289,8 @@ public class Crypter extends JFrame{
 		help.setMnemonic(KeyEvent.VK_H);
 		exit.setToolTipText("Exit application");
         exit.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_X,
-            ActionEvent.CTRL_MASK));
-        help.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_H,ActionEvent.CTRL_MASK));
+            ActionEvent.ALT_MASK));
+        help.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_H,ActionEvent.ALT_MASK));
         
         /*ActionListeners for exit and help*/
         exit.addActionListener(new ActionListener() {
