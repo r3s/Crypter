@@ -135,6 +135,7 @@ public class Crypter extends JFrame{
 		key = Arrays.copyOf(key, 16);
 		
 		/*Initialise AES */
+		//Just learned the problem with ECB. Now I feel stupid for not looking up when I wrote the code
 		Cipher c = Cipher.getInstance("AES/ECB/PKCS5Padding");
 		SecretKeySpec k = new SecretKeySpec(key, "AES");
 		
